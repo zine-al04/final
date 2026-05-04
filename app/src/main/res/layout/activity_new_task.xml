@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1FB"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/btnback"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp"
+        android:clickable="true" />
+
+
+    <TextView
+        android:id="@+id/texttask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Task"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#0F1720"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/btnback"
+        android:layout_alignBottom="@id/btnback" />
+
+
+    <TextView
+        android:id="@+id/labetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title :"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="#5A5A6E"
+        android:layout_below="@id/btnback"
+        android:layout_marginTop="24dp" />
+
+
+    <EditText
+        android:id="@+id/titletext"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_below="@id/labetitle"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext"
+        android:hint="Task title"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp" />
+
+
+    <TextView
+        android:id="@+id/labelnote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note :"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="#5A5A6E"
+        android:layout_below="@id/titletext"
+        android:layout_marginTop="20dp" />
+
+
+    <EditText
+        android:id="@+id/tasknote"
+        android:layout_width="match_parent"
+        android:layout_height="198dp"
+        android:layout_below="@id/labelnote"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext"
+        android:hint="Notes (optional)"
+        android:gravity="top|start"
+        android:padding="12dp" />
+
+    <TextView
+        android:id="@+id/labelDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date:"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="#5A5A6E"
+        android:layout_below="@id/tasknote"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+
+
+    <TextView
+        android:id="@+id/labeltime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/labelDate"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="110dp"
+        android:text="Time :"
+        android:textColor="#5A5A6E"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/btndate"
+        android:layout_width="150dp"
+        android:layout_height="51dp"
+        android:layout_below="@id/labelDate"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext"
+        android:hint="DD/MM/YYYY"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:clickable="true" />
+
+
+    <EditText
+        android:id="@+id/btntime"
+        android:layout_width="150dp"
+        android:layout_height="51dp"
+        android:layout_below="@id/labeltime"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext"
+        android:hint="HH:MM"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:clickable="true" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addtaskbtn"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_below="@id/btntime"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button"
+        android:text="Add Task"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+</RelativeLayout>

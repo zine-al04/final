@@ -1,0 +1,27 @@
+<resources>
+    <!--splash screen-->
+    <string name="app_name">Todo List</string>
+    <string name="logo">DoIt</string>
+    <string name="logo_description">App logo of DoIt</string>
+
+    <!--login screen-->
+    <string name="welcome">Welcome</string>
+    <string name="welcome2">Sign in to manage your tasks</string>
+    <string name="login">Login</string>
+    <string name="or">or</string>
+    <string name="ContinueWithGoogle">Continue with Google</string>
+    <string name="HaveAccount">"Don't have account?  "</string>
+    <string name="SignUp">SignUp</string>
+    <string name="Password">Password</string>
+    <string name="EmailAddress">Email address</string>
+    <!--signup screen-->
+    <string name="Create">Create Account</string>
+    <string name="Create2">Start organizing your Life today</string>
+    <string name="Create3">if have account</string>
+    <!--list-->
+    <string name="list">My Tasks</string>
+    <string name="list2">5 tasks remaning today</string>
+    <string name="list3">i go to grandmother</string>
+    <string name="list4">Today, 11/01/2019</string>
+
+</resources>

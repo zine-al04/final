@@ -55,7 +55,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             if (listener != null) listener.onEditClick(currentTask);
         });
 
-        // أيقونة الحذف
+
         holder.deleteIcon.setOnClickListener(v -> {
             if (listener != null) listener.onDeleteClick(currentTask);
         });

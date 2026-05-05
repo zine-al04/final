@@ -26,8 +26,8 @@ public class NewTask extends AppCompatActivity {
     private TaskDatabase database;
     private ExecutorService executorService;
 
-    // متغيرات لتخزين بيانات التعديل
-    private int taskId = -1;  // -1 يعني مهمة جديدة
+
+    private int taskId = -1;
     private boolean isEditMode = false;
 
     @Override
@@ -36,21 +36,21 @@ public class NewTask extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_new_task);
 
-        // ربط العناصر
+
         titleText = findViewById(R.id.titletext);
         btndate = findViewById(R.id.btndate);
         btntime = findViewById(R.id.btntime);
         addtaskbtn = findViewById(R.id.addtaskbtn);
         btnback = findViewById(R.id.btnback);
 
-        // تهيئة قاعدة البيانات ومحرك الخلفية
+
         database = TaskDatabase.getInstance(this);
         executorService = Executors.newSingleThreadExecutor();
 
-        // التحقق من وجود بيانات للتعديل
+
         checkForEditData();
 
-        // اختيار التاريخ
+
         btndate.setOnClickListener(v -> {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
@@ -68,7 +68,7 @@ public class NewTask extends AppCompatActivity {
             datePickerDialog.show();
         });
 
-        // اختيار الوقت
+
         btntime.setOnClickListener(v -> {
             Calendar calendar = Calendar.getInstance();
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -82,10 +82,10 @@ public class NewTask extends AppCompatActivity {
             timePickerDialog.show();
         });
 
-        // زر الرجوع
+
         btnback.setOnClickListener(v -> finish());
 
-        // زر إضافة/تحديث المهمة
+
         addtaskbtn.setOnClickListener(v -> {
             if (isEditMode) {
                 updateTask();
@@ -95,7 +95,7 @@ public class NewTask extends AppCompatActivity {
         });
     }
 
-    // التحقق من وجود بيانات للتعديل
+
     private void checkForEditData() {
         taskId = getIntent().getIntExtra("task_id", -1);
 
@@ -105,12 +105,12 @@ public class NewTask extends AppCompatActivity {
             String date = getIntent().getStringExtra("task_date");
             String time = getIntent().getStringExtra("task_time");
 
-            // عرض البيانات في الحقول
+
             if (title != null) titleText.setText(title);
             if (date != null) btndate.setText(date);
             if (time != null) btntime.setText(time);
 
-            // تغيير نص الزر إلى "Update"
+
             addtaskbtn.setText("Update Task");
         } else {
             isEditMode = false;
@@ -118,7 +118,7 @@ public class NewTask extends AppCompatActivity {
         }
     }
 
-    // حفظ مهمة جديدة
+
     private void saveNewTask() {
         String title = titleText.getText().toString().trim();
         String date = btndate.getText().toString().trim();
@@ -137,7 +137,7 @@ public class NewTask extends AppCompatActivity {
         });
     }
 
-    // تحديث مهمة موجودة
+
     private void updateTask() {
         String title = titleText.getText().toString().trim();
         String date = btndate.getText().toString().trim();
@@ -145,7 +145,7 @@ public class NewTask extends AppCompatActivity {
 
         if (!validateInputs(title, date, time)) return;
 
-        // إنشاء كائن Task مع ID القديم
+
         Task updatedTask = new Task(time, date, title, taskId);
 
         executorService.execute(() -> {
@@ -157,7 +157,7 @@ public class NewTask extends AppCompatActivity {
         });
     }
 
-    // التحقق من صحة المدخلات
+
     private boolean validateInputs(String title, String date, String time) {
         if (title.isEmpty()) {
             titleText.setError("Title is required");

@@ -33,24 +33,24 @@ public class Listetask extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_listetask);
 
-        // تهيئة RecyclerView
+
         recyclerView = findViewById(R.id.recyclerViewTasks);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // تهيئة Adapter
+
         taskAdapter = new TaskAdapter();
         recyclerView.setAdapter(taskAdapter);
 
-        // تهيئة قاعدة البيانات
+
         database = TaskDatabase.getInstance(this);
 
-        // إنشاء محرك للخلفية
+
         executorService = Executors.newSingleThreadExecutor();
 
-        // تحميل المهام (في الخلفية)
+
         loadTasks();
 
-        // إعداد مستمع الأحداث
+
         taskAdapter.setOnTaskClickListener(new TaskAdapter.OnTaskClickListener() {
             @Override
             public void onEditClick(Task task) {
@@ -64,11 +64,11 @@ public class Listetask extends AppCompatActivity {
 
             @Override
             public void onDeleteClick(Task task) {
-                // حذف المهمة في الخلفية
+
                 executorService.execute(() -> {
                     database.TaskDao().delete(task);
                     runOnUiThread(() -> {
-                        loadTasks(); // إعادة تحميل القائمة
+                        loadTasks();
                         Toast.makeText(Listetask.this, "Task deleted", Toast.LENGTH_SHORT).show();
                     });
                 });
@@ -82,7 +82,7 @@ public class Listetask extends AppCompatActivity {
             }
         });
 
-        // زر الإضافة
+
         Button plus = findViewById(R.id.plus);
         plus.setOnClickListener(v -> {
             Intent intent = new Intent(Listetask.this, NewTask.class);
@@ -91,10 +91,10 @@ public class Listetask extends AppCompatActivity {
     }
 
     private void loadTasks() {
-        // تنفيذ عملية جلب البيانات في الخلفية
+
         executorService.execute(() -> {
             List<Task> tasks = database.TaskDao().getAllTasks();
-            // تحديث واجهة المستخدم في الـ Main Thread
+
             runOnUiThread(() -> {
                 taskAdapter.setTasks(tasks);
             });
@@ -104,7 +104,7 @@ public class Listetask extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadTasks(); // تحديث القائمة عند العودة
+        loadTasks();
     }
 
     @Override
@@ -115,7 +115,7 @@ public class Listetask extends AppCompatActivity {
         }
     }
 
-    // تسجيل الخروج
+
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
